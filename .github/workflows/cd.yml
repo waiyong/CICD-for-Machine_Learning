@@ -11,9 +11,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     if: >
-    github.event_name == 'workflow_dispatch' || (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
+      github.event_name == 'workflow_dispatch' || (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
     steps:
-    - name: Debug Trigger Info
       - name: Debug Trigger Info
         run: |
           echo "Event name: ${{ github.event_name }}"
