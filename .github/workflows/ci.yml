@@ -6,9 +6,7 @@ on:
   pull_request:
     branches: ["main"] # CI runs when PR targets main
   workflow_dispatch: # Allows manually trigger workflow from Github UI
-permissions:
-    contents: read        # Needed to checkout code
-    pull-requests: write   # Needed if posting CML comments to PRs
+permissions: write-all  # Needed if posting CML comments to PRs
 
 jobs:
   build:
