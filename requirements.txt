@@ -1,4 +1,4 @@
-cml
+git+https://github.com/iterative/cml.git
 black
 scikit-learn
 matplotlib
