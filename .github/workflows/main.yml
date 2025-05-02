@@ -1,0 +1,28 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: ["main"] # CI runs after code is merged or pushed to main directly
+  pull_request:
+    branches: ["main"] # CI runs when PR targets main
+  workflow_dispatch: # Allows manually trigger workflow from Github UI
+  permissions:
+    contents: read        # Needed to checkout code
+    pull-requests: write   # Needed if posting CML comments to PRs
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: iterative/setup-cml@v2
+      - name: Install Packages
+        run: make install
+      - name: Format
+        run: make format
+      - name: Train
+        run: make train
+      - name: Evaluation
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: make eval
