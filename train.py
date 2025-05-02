@@ -25,8 +25,8 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.3, random_state=125
 )
 
-cat_col = [1,2,3]
-num_col = [0,4]
+cat_col = [1, 2, 3]
+num_col = [0, 4]
 
 transform = ColumnTransformer(
     [
@@ -70,4 +70,4 @@ print("Types to trust:", unknown_types)
 model = sio.load("Model/drug_pipeline.skops", trusted=unknown_types)
 
 
-## blah blah i am testing 
+## blah blah i am testing
